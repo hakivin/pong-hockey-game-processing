@@ -4,11 +4,30 @@ class Ball
   boolean u, r, shot;
   Ball()
   {
-    x=16;
-    y=484;
-    u=true;
-    r=true;
+    reset();
     shot=false;
+  }
+  void reset(){
+    x=int(random(100, 500));
+    y=400;
+    int xdirection=int(random(2));
+    int ydirection=int(random(2));
+    if (xdirection==0)
+      {
+        r=true;
+      }
+      else //xidrection==1
+      {
+        r=false;
+      }
+      if (ydirection==0)
+      {
+        u=true;
+      }
+      else //ydirection==1
+      {
+        u=false;
+      }
   }
   void move()
   {

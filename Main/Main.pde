@@ -12,7 +12,7 @@ void setup()
   pongball= new Ball();
   bottom=new Paddle();
   top=new Paddle();
-  top.y=5;
+  top.y=10;
   size(600, 800);
   
 }
@@ -91,21 +91,10 @@ void draw()
   if (gameover==false)
   {
     background(0);
-    
-    noFill();
-    stroke(255);
-    strokeWeight(9);
-    rect(0,0,600,800);
-    strokeWeight(1);
-    noStroke();
+    createField();
     bottom.show();
     top.show2();
-    fill(200,20,200);
-    rect(0,250,8,300);
-    rect(593,250,8,300);
-    fill(255,255,51);
-    rect(0,350,8,100);
-    rect(593,350,8,100);
+
     if (left==true)
     {
       bottom.moveleft();
@@ -155,40 +144,42 @@ void draw()
   else //gameover==true
   {
     background(0);
-    fill(255, 0, 0);
     changespeed=0;
-    textSize(18);
-    text("Blue Score: "+topscore, 35, 330);
-    text("Red Score: "+bottomscore, 35, 370);
-    textSize(36);
-    text("Game over! Click to restart.", 35, 280);
-    if (mousePressed==true)
+    gameOverScreen();
+    if (key == ' ')
     {
-      pongball.x=int(random(100, 500));
-      pongball.y=300;
-      int xdirection=int(random(2));
-      int ydirection=int(random(2));
       top.x = 270;
-      top.y = 5;
+      top.y = 10;
       bottom.x = 270;
-      bottom.y = 785;
-      if (xdirection==0)
-      {
-        pongball.r=true;
-      }
-      else //xidrection==1
-      {
-        pongball.r=false;
-      }
-      if (ydirection==0)
-      {
-        pongball.u=true;
-      }
-      else //ydirection==1
-      {
-        pongball.u=false;
-      }
+      bottom.y = 780;
+      pongball.reset();
       gameover=false;
     }
   }
+}
+
+void createField(){
+  noFill();
+  stroke(255);
+  strokeWeight(14);
+  rect(0,0,600,800);
+  strokeWeight(1);
+  noStroke();
+  fill(200,20,200);
+  rect(0,250,8,300);
+  rect(593,250,8,300);
+  fill(255,255,51);
+  rect(0,350,8,100);
+  rect(593,350,8,100);
+}
+
+void gameOverScreen(){
+  textSize(18);
+  fill(0,150,255);
+  text("Blue Score: "+topscore, 50, 420);
+  fill(255,0,0);
+  text("Red Score: "+bottomscore, 400, 420);
+  textSize(36);
+  fill(200);
+  text("Press SPACE to next round", 50, 380);
 }
