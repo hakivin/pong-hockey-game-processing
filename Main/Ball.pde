@@ -28,6 +28,7 @@ class Ball
       {
         u=false;
       }
+      shot=false;
   }
   void move()
   {

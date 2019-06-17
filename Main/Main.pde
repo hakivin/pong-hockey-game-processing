@@ -7,7 +7,7 @@ Ball pongball;
 Paddle top;
 void setup()
 {
-  frameRate(100);
+  frameRate(120);
   noStroke();
   pongball= new Ball();
   bottom=new Paddle();
@@ -166,8 +166,8 @@ void createField(){
   strokeWeight(1);
   noStroke();
   fill(200,20,200);
-  rect(0,250,8,300);
-  rect(593,250,8,300);
+  rect(0,275,8,250);
+  rect(593,275,8,250);
   fill(255,255,51);
   rect(0,350,8,100);
   rect(593,350,8,100);
